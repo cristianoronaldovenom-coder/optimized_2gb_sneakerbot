@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SneakerBot Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">&#9889; SneakerBot</div>
+    <nav>
+      <button class="nav-btn" data-tab="guide">&#x2753; Setup Guide</button>
+      <button class="nav-btn active" data-tab="tasks">Tasks</button>
+      <button class="nav-btn" data-tab="addresses">Addresses</button>
+      <button class="nav-btn" data-tab="payments">Payment Profiles</button>
+      <button class="nav-btn" data-tab="proxies">Proxies</button>
+      <button class="nav-btn" data-tab="settings">Settings</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SETUP GUIDE TAB -->
+    <section id="tab-guide" class="tab">
+      <div class="tab-header"><h2>Setup Guide</h2></div>
+      <div class="guide-grid">
+
+        <!-- STEP 1 -->
+        <div class="guide-step">
+          <div class="guide-step-num">1</div>
+          <div class="guide-step-body">
+            <h3>Find what you want to buy</h3>
+            <p>Go to <a href="https://www.pokemoncenter.com/en-ca" target="_blank">pokemoncenter.com/en-ca</a>, find the product (e.g. an Elite Trainer Box), and <strong>copy the URL</strong> from your browser's address bar.</p>
+            <div class="guide-example">
+              Example URL:<br/>
+              <code>https://www.pokemoncenter.com/en-ca/product/290-80538</code>
+            </div>
+            <p class="guide-tip">💡 If the item is currently sold out, that's fine — the bot will monitor it and buy it the moment it comes back in stock.</p>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="guide-step">
+          <div class="guide-step-num">2</div>
+          <div class="guide-step-body">
+            <h3>Add your shipping address</h3>
+            <p>Go to the <strong>Addresses</strong> tab and add where you want the order shipped. This is your full name, street address, city, province, postal code, and phone number.</p>
+            <div class="guide-checklist">
+              <div class="guide-check">✅ First &amp; Last Name</div>
+              <div class="guide-check">✅ Street Address (e.g. 123 Main St)</div>
+              <div class="guide-check">✅ City, Province (e.g. ON), Postal Code (e.g. K1A 0A6)</div>
+              <div class="guide-check">✅ Country: CA</div>
+              <div class="guide-check">✅ Phone number (digits only, e.g. 6135551234)</div>
+              <div class="guide-check">✅ Email address</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="guide-step">
+          <div class="guide-step-num">3</div>
+          <div class="guide-step-body">
+            <h3>Add your payment info</h3>
+            <p>Go to the <strong>Payment Profiles</strong> tab. You need your credit or debit card details — this is how the bot pays at checkout.</p>
+            <div class="guide-checklist">
+              <div class="guide-check">✅ Card number (the 16-digit number on the front)</div>
+              <div class="guide-check">✅ Cardholder name (exactly as printed on card)</div>
+              <div class="guide-check">✅ Expiry month (e.g. 08) and year (e.g. 2027)</div>
+              <div class="guide-check">✅ CVV (the 3-digit code on the back)</div>
+            </div>
+            <p class="guide-tip">💡 Visa and Mastercard work best. The bot supports credit cards and debit cards with a Visa/MC logo.</p>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="guide-step">
+          <div class="guide-step-num">4</div>
+          <div class="guide-step-body">
+            <h3>Create a Task</h3>
+            <p>Go to the <strong>Tasks</strong> tab, click <strong>+ New Task</strong>, and fill in:</p>
+            <div class="guide-checklist">
+              <div class="guide-check">✅ <strong>Product URL</strong> — paste the URL you copied in Step 1</div>
+              <div class="guide-check">✅ <strong>Site</strong> — select "Pokemon Center Canada"</div>
+              <div class="guide-check">✅ <strong>Keywords</strong> — type a word from the product name to make sure you get the right version (e.g. <em>ETB</em>, <em>Scarlet</em>, <em>Booster Bundle</em>). Leave blank if there's only one version.</div>
+              <div class="guide-check">✅ <strong>Shipping Address</strong> — pick the one you added in Step 2</div>
+              <div class="guide-check">✅ <strong>Payment Profile</strong> — pick the card you added in Step 3</div>
+              <div class="guide-check">✅ <strong>Notification Email</strong> — your email so you get an order confirmation</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="guide-step">
+          <div class="guide-step-num">5</div>
+          <div class="guide-step-body">
+            <h3>Start monitoring &amp; walk away</h3>
+            <p>Back on the <strong>Tasks</strong> tab, click <strong>📡 Monitor Stock</strong> on your task. The bot checks every 2 seconds. The moment the item is in stock, it automatically adds to cart and completes checkout — no action needed from you.</p>
+            <p class="guide-tip">💡 Once the app is deployed (not just running in development), this works even when your computer is off.</p>
+          </div>
+        </div>
+
+        <!-- OPTIONAL SECTION -->
+        <div class="guide-optional">
+          <h3>Optional extras — you do NOT need these to buy things</h3>
+
+          <div class="guide-optional-item">
+            <div class="guide-optional-badge">Optional</div>
+            <div>
+              <strong>2Captcha API Key</strong><br/>
+              Some checkout pages show a "I'm not a robot" captcha challenge. If you enable <em>Auto-solve captchas</em> on a task, the bot needs a 2Captcha key to solve it automatically.
+              Without this key, the bot will still try to checkout but may get stuck if a captcha appears.<br/>
+              <span class="guide-tip">Get one at <a href="https://2captcha.com" target="_blank">2captcha.com</a> — costs about $3 USD per 1,000 solves.</span>
+            </div>
+          </div>
+
+          <div class="guide-optional-item">
+            <div class="guide-optional-badge">Optional</div>
+            <div>
+              <strong>Discord Webhook URL</strong><br/>
+              If you use Discord, you can get a message there the instant a checkout succeeds or fails — even while your phone is in your pocket.
+              You only need <em>one</em> of the two webhooks — most people use Discord.<br/>
+              <span class="guide-tip">To set it up: open Discord → right-click a channel → Edit Channel → Integrations → Create Webhook → copy the URL → paste it in Settings here.</span>
+            </div>
+          </div>
+
+          <div class="guide-optional-item">
+            <div class="guide-optional-badge">Optional</div>
+            <div>
+              <strong>HTTP Webhook URL</strong><br/>
+              This is an alternative to Discord — it sends a notification to any website or app you specify. Only useful if you're building your own notification system. <strong>Most people skip this and use Discord instead.</strong>
+            </div>
+          </div>
+
+          <div class="guide-optional-item">
+            <div class="guide-optional-badge">Optional</div>
+            <div>
+              <strong>Proxies</strong><br/>
+              Proxies hide your real IP address from Pokemon Center's servers, which helps avoid getting blocked during monitoring. You don't need one to get started, but if the bot keeps hitting bot protection warnings, adding a residential proxy will fix it.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TASKS TAB -->
+    <section id="tab-tasks" class="tab active">
+      <div class="tab-header">
+        <h2>Tasks</h2>
+        <button class="btn-primary" onclick="openModal('task-modal')">+ New Task</button>
+      </div>
+      <div id="tasks-list" class="card-grid"></div>
+    </section>
+
+    <!-- ADDRESSES TAB -->
+    <section id="tab-addresses" class="tab">
+      <div class="tab-header">
+        <h2>Addresses</h2>
+        <button class="btn-primary" onclick="openModal('address-modal')">+ New Address</button>
+      </div>
+      <div id="addresses-list" class="card-grid"></div>
+    </section>
+
+    <!-- PAYMENT PROFILES TAB -->
+    <section id="tab-payments" class="tab">
+      <div class="tab-header">
+        <h2>Payment Profiles</h2>
+        <button class="btn-primary" onclick="openModal('payment-modal')">+ New Profile</button>
+      </div>
+      <div id="payments-list" class="card-grid"></div>
+    </section>
+
+    <!-- PROXIES TAB -->
+    <section id="tab-proxies" class="tab">
+      <div class="tab-header">
+        <h2>Proxies</h2>
+        <button class="btn-primary" onclick="openModal('proxy-modal')">+ New Proxy</button>
+      </div>
+      <div id="proxies-list" class="card-grid"></div>
+    </section>
+
+    <!-- SETTINGS TAB -->
+    <section id="tab-settings" class="tab">
+      <div class="tab-header">
+        <h2>Settings</h2>
+      </div>
+      <div class="settings-grid">
+        <div class="setting-card">
+          <label>2Captcha API Key</label>
+          <p class="setting-desc">Required for auto-solving reCAPTCHA on checkout pages</p>
+          <div class="setting-row">
+            <input type="password" id="captcha-key-input" placeholder="Enter your 2Captcha API key" />
+            <button class="btn-primary" onclick="saveSetting('captcha_api_key', document.getElementById('captcha-key-input').value)">Save</button>
+          </div>
+        </div>
+        <div class="setting-card">
+          <label>Discord Webhook URL</label>
+          <p class="setting-desc">Get checkout success/failure notifications in Discord</p>
+          <div class="setting-row">
+            <input type="text" id="discord-webhook-input" placeholder="https://discord.com/api/webhooks/..." />
+            <button class="btn-primary" onclick="saveSetting('discord_webhook_url', document.getElementById('discord-webhook-input').value)">Save</button>
+          </div>
+        </div>
+        <div class="setting-card">
+          <label>HTTP Webhook URL</label>
+          <p class="setting-desc">Optional generic webhook for checkout events</p>
+          <div class="setting-row">
+            <input type="text" id="webhook-input" placeholder="https://your-webhook.com/hook" />
+            <button class="btn-primary" onclick="saveSetting('webhook_url', document.getElementById('webhook-input').value)">Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- TASK MODAL -->
+  <div id="task-modal" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="task-modal-title">New Task</h3>
+        <button class="modal-close" onclick="closeModal('task-modal')">&#x2715;</button>
+      </div>
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <div class="form-row">
+          <label>Product URL *</label>
+          <input type="url" id="task-url" placeholder="https://www.pokemoncenter.com/en-ca/product/..." required />
+        </div>
+        <div class="form-row">
+          <label>Site *</label>
+          <select id="task-site">
+            <option value="1">Footsites</option>
+            <option value="2">Shopify</option>
+            <option value="3">Demandware</option>
+            <option value="4">Nike</option>
+            <option value="5">Supreme NY</option>
+            <option value="6" selected>Pokemon Center Canada</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Keywords <span class="hint">(comma-separated, e.g. "ETB, Scarlet")</span></label>
+          <input type="text" id="task-keywords" placeholder="ETB, Scarlet and Violet" />
+        </div>
+        <div class="form-row">
+          <label>Size <span class="hint">(optional, e.g. "10", "XL")</span></label>
+          <input type="text" id="task-size" placeholder="Leave blank if not applicable" />
+        </div>
+        <div class="form-row">
+          <label>Shipping Address</label>
+          <select id="task-shipping"></select>
+        </div>
+        <div class="form-row">
+          <label>Billing Address</label>
+          <select id="task-billing"></select>
+        </div>
+        <div class="form-row">
+          <label>Payment Profile</label>
+          <select id="task-payment"></select>
+        </div>
+        <div class="form-row">
+          <label>Coupon Code <span class="hint">(optional)</span></label>
+          <input type="text" id="task-coupon" placeholder="SAVE10" />
+        </div>
+        <div class="form-row">
+          <label>Notification Email <span class="hint">(optional)</span></label>
+          <input type="email" id="task-email" placeholder="you@email.com" />
+        </div>
+        <div class="form-row checkbox-row">
+          <label><input type="checkbox" id="task-captcha" checked /> Auto-solve captchas</label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeModal('task-modal')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADDRESS MODAL -->
+  <div id="address-modal" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="address-modal-title">New Address</h3>
+        <button class="modal-close" onclick="closeModal('address-modal')">&#x2715;</button>
+      </div>
+      <form id="address-form">
+        <input type="hidden" id="address-id" />
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label>First Name *</label>
+            <input type="text" id="addr-first" required />
+          </div>
+          <div class="form-row">
+            <label>Last Name *</label>
+            <input type="text" id="addr-last" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Address Line 1 *</label>
+          <input type="text" id="addr-addr1" required />
+        </div>
+        <div class="form-row">
+          <label>Address Line 2</label>
+          <input type="text" id="addr-addr2" />
+        </div>
+        <div class="form-grid-3">
+          <div class="form-row">
+            <label>City *</label>
+            <input type="text" id="addr-city" required />
+          </div>
+          <div class="form-row">
+            <label>Province *</label>
+            <input type="text" id="addr-state" placeholder="ON" required />
+          </div>
+          <div class="form-row">
+            <label>Postal Code *</label>
+            <input type="text" id="addr-zip" placeholder="A1A 1A1" required />
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label>Country *</label>
+            <input type="text" id="addr-country" value="CA" required />
+          </div>
+          <div class="form-row">
+            <label>Phone *</label>
+            <input type="tel" id="addr-phone" placeholder="6135551234" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Email *</label>
+          <input type="email" id="addr-email" required />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeModal('address-modal')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Address</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PAYMENT PROFILE MODAL -->
+  <div id="payment-modal" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="payment-modal-title">New Payment Profile</h3>
+        <button class="modal-close" onclick="closeModal('payment-modal')">&#x2715;</button>
+      </div>
+      <form id="payment-form">
+        <input type="hidden" id="payment-id" />
+        <div class="form-row">
+          <label>Profile Label *</label>
+          <input type="text" id="pay-label" placeholder="My Visa Card" required />
+        </div>
+        <div class="form-row">
+          <label>Cardholder Name *</label>
+          <input type="text" id="pay-holder" placeholder="John Smith" required />
+        </div>
+        <div class="form-row">
+          <label>Card Number *</label>
+          <input type="text" id="pay-number" placeholder="4111 1111 1111 1111" maxlength="19" required />
+        </div>
+        <div class="form-grid-3">
+          <div class="form-row">
+            <label>Exp Month *</label>
+            <input type="text" id="pay-month" placeholder="12" maxlength="2" required />
+          </div>
+          <div class="form-row">
+            <label>Exp Year *</label>
+            <input type="text" id="pay-year" placeholder="2027" maxlength="4" required />
+          </div>
+          <div class="form-row">
+            <label>CVV *</label>
+            <input type="text" id="pay-cvv" placeholder="123" maxlength="4" required />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeModal('payment-modal')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PROXY MODAL -->
+  <div id="proxy-modal" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="proxy-modal-title">New Proxy</h3>
+        <button class="modal-close" onclick="closeModal('proxy-modal')">&#x2715;</button>
+      </div>
+      <form id="proxy-form">
+        <input type="hidden" id="proxy-id" />
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label>Host *</label>
+            <input type="text" id="proxy-host" placeholder="123.45.67.89" required />
+          </div>
+          <div class="form-row">
+            <label>Port *</label>
+            <input type="number" id="proxy-port" placeholder="8080" required />
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label>Username</label>
+            <input type="text" id="proxy-user" placeholder="optional" />
+          </div>
+          <div class="form-row">
+            <label>Password</label>
+            <input type="password" id="proxy-pass" placeholder="optional" />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeModal('proxy-modal')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Proxy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
